@@ -4,9 +4,9 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.10"
     id("com.adarshr.test-logger") version "3.2.0"
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.1.0"
 }
 
 repositories {
@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
-    testImplementation("org.amshove.kluent:kluent:1.68")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+    testImplementation("org.amshove.kluent:kluent:1.72")
 }
 
 sourceSets {
