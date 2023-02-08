@@ -4,7 +4,12 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun power(base: Int, exponent: Int): Int {
-    TODO("not implemented")
+
+    var result = 1
+    (1.. exponent).forEach {
+        result *= base
+    }
+    return result
 }
 
 private class Test {

@@ -2,9 +2,15 @@ package com.igorwojda.integer.reverse
 
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
+import kotlin.math.absoluteValue
 
 private fun reverseInt(i: Int): Int {
-    TODO("not implemented")
+    return if (i >= 0) {
+        i.toString().reversed().toInt()
+    }
+    else {
+        -(i.absoluteValue.toString().reversed().toInt())
+    }
 }
 
 private class Test {

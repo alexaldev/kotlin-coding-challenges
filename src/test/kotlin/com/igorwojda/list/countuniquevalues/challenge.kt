@@ -4,7 +4,12 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun countUniqueValues(list: List<Int>): Int {
-    TODO("not implemented")
+    if (list.isEmpty()) return 0
+    return list.zipWithNext { a, b -> (a != b).toInt() }.sum() + 1
+}
+
+fun Boolean.toInt(): Int {
+    return if (this) 1 else 0
 }
 
 private class Test {

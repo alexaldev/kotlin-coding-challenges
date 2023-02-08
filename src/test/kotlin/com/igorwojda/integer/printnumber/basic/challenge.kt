@@ -4,7 +4,9 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun printNumber(n: Int): List<Int> {
-    TODO("not implemented")
+    val result = mutableListOf<Int>()
+    (1..n).reversed().forEach { result.add(it) }
+    return result
 }
 
 class Test {

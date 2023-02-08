@@ -4,7 +4,15 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun maxOccurrentChar(str: String): Char? {
-    TODO("not implemented")
+
+    if (str.isEmpty()) return null
+
+    val frequencies = hashMapOf<Char, Int>()
+    str.toCharArray().forEach {
+        frequencies[it] = (frequencies[it] ?: 0) + 1
+    }
+
+    return frequencies.maxBy { it.value }.key
 }
 
 private class Test {

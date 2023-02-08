@@ -4,7 +4,13 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun isAnagram(str1: String, str2: String): Boolean {
-    TODO("not implemented")
+
+    if (str1.length != str2.length) return false
+
+    return !str1
+        .lowercase()
+        .filter { it.isLetterOrDigit() }
+        .any { it !in str2.lowercase() }
 }
 
 private class Test {

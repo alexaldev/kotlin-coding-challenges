@@ -1,79 +1,128 @@
 package com.igorwojda.linkedlist.singly.base
 
+import org.amshove.kluent.shouldBeEqualTo
+
 private class SinglyLinkedList<E> {
-    // implement
+    var head: Node<E>? = null
+    val size: Int
+        get() {
+            if (head == null) return 0
+
+            var hasNext = true
+            var counter = 0
+            var currentNode = head
+
+            while(hasNext) {
+                counter++
+                hasNext = currentNode?.next != null
+                currentNode = currentNode?.next
+            }
+
+            return counter
+        }
+
+    val first: Node<E>?
+        get() = head
+
+    val last: Node<E>?
+        get() {
+            var current = head
+            while (current?.next != null) {
+                current = current.next
+            }
+            return current
+        }
+
+    fun insertFirst(data: E) {
+        head = if (head == null) { // First
+            Node(data, null)
+        } else {
+            Node(data, head)
+        }
+    }
+
+    fun clear() {
+        var current = head
+        while(current?.hasNext() == true) {
+
+        }
+    }
 }
 
 private data class Node<T>(
     var data: T,
     var next: Node<T>? = null
-)
+) {
+    fun hasNext() = next != null
+}
 
 private class Test {
-//    @Test
-//    fun `when list is created head node is null`() {
-//        SinglyLinkedList<Int>().apply {
-//            head shouldBeEqualTo null
-//        }
-//    }
-//
-//    @Test
-//    fun `append a node to the start of the list`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(1)
-//            head?.data shouldBeEqualTo 1
-//            insertFirst(2)
-//            head?.data shouldBeEqualTo 2
-//        }
-//    }
-//
-//    @Test
-//    fun `return the number of items in the linked list`() {
-//        SinglyLinkedList<Int>().apply {
-//            size shouldBeEqualTo 0
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            size shouldBeEqualTo 4
-//        }
-//    }
-//
-//    @Test
-//    fun `return the first element`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(1)
-//            first?.data shouldBeEqualTo 1
-//            insertFirst(2)
-//            first?.data shouldBeEqualTo 2
-//        }
-//    }
-//
-//    @Test
-//    fun `return the last element`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(2)
-//            last?.data shouldBeEqualTo 2
-//            last?.next shouldBeEqualTo null
-//            insertFirst(1)
-//            last?.data shouldBeEqualTo 2
-//            last?.next shouldBeEqualTo null
-//        }
-//    }
-//
-//    @Test
-//    fun `empty the list`() {
-//        SinglyLinkedList<Int>().apply {
-//            size shouldBeEqualTo 0
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            size shouldBeEqualTo 4
-//            clear()
-//            size shouldBeEqualTo 0
-//        }
-//    }
+    @org.junit.jupiter.api.Test
+    fun `when list is created head node is null`() {
+        SinglyLinkedList<Int>().apply {
+            head shouldBeEqualTo null
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    fun `append a node to the start of the list`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(1)
+            head?.data shouldBeEqualTo 1
+            insertFirst(2)
+            head?.data shouldBeEqualTo 2
+            insertFirst(3)
+            head?.data shouldBeEqualTo 3
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    fun `return the number of items in the linked list`() {
+        SinglyLinkedList<Int>().apply {
+            size shouldBeEqualTo 0
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            size shouldBeEqualTo 4
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    fun `return the first element`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(1)
+            first?.data shouldBeEqualTo 1
+            insertFirst(2)
+            first?.data shouldBeEqualTo 2
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    fun `return the last element`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(2)
+            last?.data shouldBeEqualTo 2
+            last?.next shouldBeEqualTo null
+            insertFirst(1)
+            last?.data shouldBeEqualTo 2
+            last?.next shouldBeEqualTo null
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    fun `empty the list`() {
+        SinglyLinkedList<Int>().apply {
+            size shouldBeEqualTo 0
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            size shouldBeEqualTo 4
+            clear()
+            size shouldBeEqualTo 0
+        }
+    }
 //
 //    @Test
 //    fun `remove the first node when the list has a size of one`() {
